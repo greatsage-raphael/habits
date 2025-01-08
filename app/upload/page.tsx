@@ -10,7 +10,6 @@ import { supabase } from '@/scripts/admin'
 
 type FileType = {
   name: string;
-  time: string;
   documentId: string
 };
 
@@ -91,7 +90,6 @@ export default function PDFDashboard() {
           } else if (data) {
             const formattedFiles = data.map((file) => ({
               name: file.pdfname,
-              time: 'Uploaded recently',
               documentId: file.documentid
             }));
             setFiles(formattedFiles);
@@ -113,7 +111,7 @@ export default function PDFDashboard() {
 
   return (
     <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-6">Chat With Your PDFs</h1>
+      <h1 className="text-3xl font-bold text-center mb-6">Chat With your Contracts: </h1>
       <Card className="mb-8">
         <CardContent>
           {isLoading ? (
@@ -133,7 +131,6 @@ export default function PDFDashboard() {
                     <Upload className="w-5 h-5" />
                     {file.name}
                   </span>
-                  <span className="text-sm text-gray-500">{file.time}</span>
                 </li>
               ))}
             </ul>
@@ -156,7 +153,7 @@ export default function PDFDashboard() {
               onChange={handleFileChange}
               required
             />
-            <Button onClick={handleUploadClick} className="mb-2">Upload a File</Button>
+            <Button onClick={handleUploadClick} className="mb-2 primary-gradient primary-shadow border-gray-800 mt-4 flex cursor-pointer items-center space-x-2 rounded-full border px-3 py-1 text-sm hover:opacity-80 text-white">Upload a new Contract</Button>
           </div>
           <p className="text-sm text-gray-500">...or drag and drop a file.</p>
         </div>
