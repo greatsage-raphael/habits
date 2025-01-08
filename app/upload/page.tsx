@@ -41,7 +41,7 @@ export default function PDFDashboard() {
       let uploadRoute = '';
 
       if (file.type === 'application/pdf' || file.type === 'text/plain') {
-        uploadRoute = 'http://localhost:8080/uploadPdfs';
+        uploadRoute = 'https://red-delight-414207.uc.r.appspot.com/uploadPdfs';
       } else {
         throw new Error('Unsupported file type');
       }
