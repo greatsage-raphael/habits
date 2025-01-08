@@ -1,52 +1,33 @@
 import Link from 'next/link';
 import { UserNav } from './UserNav';
 import { currentUser } from '@clerk/nextjs';
+import { FileText } from 'lucide-react';
 
 export default async function Header() {
   const user = await currentUser();
   return (
     <div className="container relative m-0 mx-auto py-10 md:px-10">
-      <div className="max-width flex items-center justify-between text-white">
+      <div className="max-width flex items-center justify-between text-black">
         {/* logo */}
         <Link className="flex w-fit items-center gap-[2px]" href="/">
-          <img
-            src="/logo.svg"
-            width={50}
-            height={50}
-            alt="logo"
-            className="h-5 w-5 md:h-8 md:w-8"
-          />
-          <h1 className="text-xl font-medium text-[#25292F] md:text-3xl">
-            NoteCast
-          </h1>
+          <FileText className="h-6 w-6" />
+          <h1 className="text-xl font-semibold">Contract Suite</h1>
         </Link>
         {/* buttons */}
         <div className="flex w-fit items-center gap-[22px]">
           {user ? (
             <>
             <Link
-                href={'/record'}
+                href={'/scan'}
                 className="hidden cursor-pointer text-lg text-dark md:inline-block lg:text-xl"
               >
-                Record
+                Scan
               </Link>
               <Link
-                href={'/generate'}
+                href={'/upload'}
                 className="hidden cursor-pointer text-lg text-dark md:inline-block lg:text-xl"
               >
-                Generate
-              </Link>
-              <Link
-                href={'/tests'}
-                className="hidden cursor-pointer text-lg text-dark md:inline-block lg:text-xl"
-              >
-                Community
-              </Link>
-              <Link
-                href={'/tutor'}
-                className="hidden cursor-pointer text-lg text-dark md:inline-block lg:text-xl"
-              >
-                Start Lecture
+                Upload
               </Link>
               <UserNav
                 image={user.imageUrl}
@@ -59,7 +40,7 @@ export default async function Header() {
               />
             </>
           ) : (
-            <Link href="/record">
+            <Link href="/upload">
               <button className="text-md primary-gradient primary-shadow rounded-lg px-5 py-1 text-center text-light md:px-10 md:py-2 md:text-xl">
                 Sign in
               </button>

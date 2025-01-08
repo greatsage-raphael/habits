@@ -1,45 +1,54 @@
-"use client"
+import { Switch } from '@headlessui/react';
 
-import * as React from "react"
-import * as TogglePrimitive from "@radix-ui/react-toggle"
-import { cva, type VariantProps } from "class-variance-authority"
+function classNames(...classes: any) {
+  return classes.filter(Boolean).join(' ');
+}
 
-import { cn } from "@/utils"
-
-const toggleVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
-  {
-    variants: {
-      variant: {
-        default: "bg-transparent",
-        outline:
-          "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
-      },
-      size: {
-        default: "h-10 px-3",
-        sm: "h-9 px-2.5",
-        lg: "h-11 px-5",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
-
-const Toggle = React.forwardRef<
-  React.ElementRef<typeof TogglePrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> &
-    VariantProps<typeof toggleVariants>
->(({ className, variant, size, ...props }, ref) => (
-  <TogglePrimitive.Root
-    ref={ref}
-    className={cn(toggleVariants({ variant, size, className }))}
-    {...props}
-  />
-))
-
-Toggle.displayName = TogglePrimitive.Root.displayName
-
-export { Toggle, toggleVariants }
+export default function Toggle({ chatOnlyView, setChatOnlyView }: any) {
+  return (
+    <div className="sm:hidden flex w-full items-center justify-center sm:mt-0 mt-5 mb-1">
+      <Switch.Group as="div" className="flex">
+        <Switch.Label
+          as="span"
+          className="mr-3 text-sm flex justify-center gap-2 items-center"
+        >
+          <span
+            className={`font-medium ${
+              chatOnlyView ? 'text-gray-400' : 'text-gray-900 font-semibold'
+            }`}
+          >
+            PDF + Chat
+          </span>{' '}
+        </Switch.Label>
+        <Switch
+          checked={chatOnlyView}
+          onChange={setChatOnlyView}
+          className={classNames(
+            chatOnlyView ? 'bg-black' : 'bg-gray-200',
+            'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-offset-2',
+          )}
+        >
+          <span
+            aria-hidden="true"
+            className={classNames(
+              chatOnlyView ? 'translate-x-5' : 'translate-x-0',
+              'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out',
+            )}
+          />
+        </Switch>
+        <Switch.Label
+          as="span"
+          className="ml-3 text-sm flex justify-center gap-2 items-center"
+        >
+          <span
+            className={`font-medium ${
+              !chatOnlyView ? 'text-gray-400' : 'text-gray-900 font-semibold'
+            }`}
+          >
+            Chat Only
+          </span>{' '}
+        </Switch.Label>
+      </Switch.Group>
+    </div>
+  );
+}
