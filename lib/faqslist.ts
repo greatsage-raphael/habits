@@ -1,66 +1,46 @@
 export const FAQList = {
-    FAQ_EN: [
-      {
-        question: "What is a landing page?",
-        answer:
-          "A landing page is a standalone web page created specifically for a marketing or advertising campaign. It's where a visitor 'lands' after they click on a link in an email, or ads from Google, Bing, YouTube, Facebook, Instagram, Twitter, or similar places on the web. Unlike web pages, which typically have many goals and encourage exploration, landing pages are designed with a single focus or goal, known as a call to action (CTA).",
-      },
-      {
-        question: "How can I create a landing page?",
-        answer:
-          "Creating a landing page can be done in several steps: 1) Choose a landing page template that fits your campaign's needs or start from scratch. 2) Identify your landing page's objective and CTA. 3) Write compelling answer that urges visitors to take action. 4) Incorporate design elements such as images, videos, and forms that align with your message. 5) Test your page's usability and mobile responsiveness. 6) Use SEO best practices to help your page get found. 7) Publish your landing page and monitor its performance to make adjustments as needed.",
-      },
-      {
-        question: "Why is a landing page important?",
-        answer:
-          "Landing pages are crucial for any marketing strategy because they provide a targeted platform for converting visitors into leads or customers. Unlike general websites, landing pages focus the visitor's attention on a single offer, minimizing distractions and guiding them towards a specific action. This focused approach can significantly increase the effectiveness of your marketing campaigns, improve your ad performance, and enhance the overall user experience by providing them with the information or solution they were seeking.",
-      },
-      {
-        question: "Why choose our landing page boilerplate?",
-        answer:
-          "Our landing page template is free, open-source, and powerful, making it ideal for various projects and marketing campaigns. It allows you to create a landing page in under an hour, simplifying the development process while also offering a high degree of customization and responsiveness.",
-      },
-      {
-        question: "What skills do I need to use this template?",
-        answer:
-          "To use our landing page template, you only need basic web editing skills. The design of the template is intended to be easy for non-technical users to get started with, while also providing high customizability for experienced developers.",
-      },
-      {
-        question: "How do I get started with the landing page template?",
-        answer:
-          "Getting started is very simple. Just download the source code from our GitHub repository, edit the text and images as needed, and then deploy it to your server.",
-      },
-      {
-        question: "Does the landing page template support responsive design?",
-        answer:
-          "Yes, our landing page template supports responsive design, ensuring that your webpage displays perfectly on a variety of devices, whether desktop, tablet, or smartphone.",
-      },
-      {
-        question: "Can I use this template for a commercial project?",
-        answer:
-          "Absolutely. Our template is open-source, and you can use it for any type of project, including commercial purposes. We encourage users to utilize this template to create and optimize their online projects.",
-      },
-      {
-        question: "Do you offer any customization services?",
-        answer:
-          "We accept paid custom development of landing pages. Please contact us via email at karma.zhao@gmail.com or Twitter @huglemon.",
-      },
-      {
-        question: "Are there any restrictions on using this template?",
-        answer:
-          "No. You are free to use and modify this template. At the same time, we encourage developers to submit PRs to help improve this landing page template together.",
-      },
-      {
-        question: "Does this template include SEO optimization features?",
-        answer:
-          "Yes, our template includes basic SEO optimization features to help your webpage achieve better rankings in search engines.",
-      },
-      {
-        question: "What should I do if I encounter problems using the template?",
-        answer:
-          "If you encounter any issues while using the template, please contact us via Twitter @huglemon.",
-      },
-    ],
+  FAQ_EN: [
+    {
+      question: "What types of contracts can I upload?",
+      answer: "You can upload contracts in various formats, including PDF and Word documents. The app supports a wide range of contract types, from employment agreements to service contracts.",
+    },
+    {
+      question: "How does the AI analyze my contract?",
+      answer: "The AI scans your uploaded contract to identify key clauses, terms, and sections. It uses this analysis to answer your questions and provide context-aware references from the document.",
+    },
+    {
+      question: "Can I sign my contract within the app?",
+      answer: "Yes, the app includes secure e-signature functionality, allowing you to digitally sign your contracts directly within the platform.",
+    },
+    {
+      question: "Does the app support multiple languages?",
+      answer: "Absolutely! The app can analyze and provide answers in various languages, ensuring you can work with contracts in your preferred language.",
+    },
+    {
+      question: "How secure is my contract data?",
+      answer: "Your data is protected with advanced encryption protocols, ensuring your contracts remain private and secure throughout the process.",
+    },
+    {
+      question: "What happens if I have questions about a specific clause?",
+      answer: "You can ask the AI any questions about your contract, and it will provide instant answers with references to the relevant sections or clauses.",
+    },
+    {
+      question: "Can I download the analysis of my contract?",
+      answer: "Yes, you can export a summary of the AI's analysis, including answers to your questions and references, for record-keeping or sharing purposes.",
+    },
+    {
+      question: "Is the app suitable for businesses?",
+      answer: "Definitely! The app is designed for both individuals and businesses, streamlining contract management, signing, and analysis processes.",
+    },
+    {
+      question: "Does the app support integration with other tools?",
+      answer: "Integration capabilities may vary based on your needs. Contact our support team to discuss specific integrations with your existing tools.",
+    },
+    {
+      question: "Is there a limit to the number of contracts I can upload?",
+      answer: "The number of uploads may depend on your subscription plan. Check the app's pricing and features section for detailed information.",
+    },
+  ],  
   
     FAQ_ZH: [
       {

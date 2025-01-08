@@ -1,50 +1,51 @@
-import { FaMicrophoneAlt } from "react-icons/fa";
+import { FaFileUpload, FaGlobe, FaLock, FaMicrophoneAlt, FaPenFancy } from "react-icons/fa";
 import { FaMobileAlt } from "react-icons/fa";
-import { MdDashboardCustomize } from "react-icons/md";
+import { MdDashboardCustomize, MdHelp } from "react-icons/md";
 import { GrOptimize, GrDeploy } from "react-icons/gr";
 import { FaEarthAsia } from "react-icons/fa6";
-import { IoIosCloudUpload } from "react-icons/io";
+import { IoIosCloudUpload, IoMdDownload } from "react-icons/io";
 import { MdAudioFile } from "react-icons/md";
 import { MdQuiz } from "react-icons/md";
 
 export const FeaturesList = {
   FRETURES_EN: [
     {
-      icon: FaMicrophoneAlt,
-      title: "Record Your Classes",
-      description: "Record your classes and have them become a knowledge base for your studies",
+      icon: FaFileUpload,
+      title: "Upload Your Contracts",
+      description: "Easily upload contracts in various formats and get them ready for analysis and signing.",
     },
     {
-      icon: IoIosCloudUpload,
-      title: "Upload your Class Media",
+      icon: FaMobileAlt,
+      title: "AI-Powered Analysis",
       description:
-        "Upload your lectures notes, audios, videos, photos and have Gemini transform them into searchable knowledge base",
+        "Let the AI scan your contract, identify key clauses, and answer your questions with references from the document.",
     },
     {
-      icon: FaEarthAsia,
-      title: "Globalization Support",
+      icon: FaPenFancy,
+      title: "E-Signature Support",
       description:
-        "Supports multiple languages, making it effortless to change to the language of your choice and have Gemini generate notes, quizzes, flashcards flawlessly",
+        "Digitally sign your contracts quickly and securely, saving time and eliminating paperwork.",
     },
     {
-      icon: MdAudioFile,
-      title: "Generate Audio Lectures",
+      icon: FaGlobe,
+      title: "Multi-Language Support",
       description:
-        "Generate audio lectures in the language of your choice and learn by listening to any topic of your choice",
+        "Analyze and interact with contracts in your preferred language, with seamless multilingual functionality.",
     },
     {
-      icon: MdQuiz,
-      title: "Generate Quizzes & flashcards",
+      icon: MdHelp,
+      title: "Real-Time Q&A",
       description:
-        "Test your knowledge with quizzes and flashcards from your uploaded media and share with friends to get them learning too",
+        "Ask the AI any questions about your contract and get instant, context-aware answers with clause references.",
     },
     {
-      icon: FaEarthAsia,
-      title: "AI lecturer",
+      icon: FaLock,
+      title: "Secure Document Handling",
       description:
-        "Interact with a real time ai lecturer with access to your class media",
-    },
+        "Ensure your contracts are protected with advanced encryption and secure processing protocols.",
+    }
   ],
+
 
   FRETURES_ZH: [
     {

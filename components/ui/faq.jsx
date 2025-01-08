@@ -45,54 +45,45 @@ export default function Feature({ locale, langName = 'en' }) {
 				<Accordion type="single" collapsible className="space-y-4 ">
             <AccordionItem value="faq-1">
               <AccordionTrigger className="flex items-center justify-between rounded-md bg-muted px-4 py-3 font-medium transition-colors hover:bg-muted/50 primary-gradient primary-shadow border-gray-800 text-white">
-                <span>What does our app do?</span>
+                <span>What types of contracts can I upload?</span>
                 <div className="h-5 w-5 text-muted-foreground" />
               </AccordionTrigger>
               <AccordionContent className="rounded-md border bg-background px-4 py-3 text-muted-foreground shadow-sm primary-gradient primary-shadow border-gray-800">
                 <p>
-                  Our app allows a user to generate lecture notes, audios, quizzes and flashcards based off the uploaded documents and recorded lectures
+                You can upload contracts in various formats, including PDF and Word documents. The app supports a wide range of contract types, from employment agreements to service contracts.
                 </p>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="faq-2">
               <AccordionTrigger className="flex items-center justify-between rounded-md bg-muted px-4 py-3 font-medium transition-colors hover:bg-muted/50 primary-gradient primary-shadow border-gray-800">
-                <span>How does the app work ?</span>
+                <span>How does the AI analyze my contract?</span>
                 <div className="h-5 w-5 text-muted-foreground" />
               </AccordionTrigger>
               <AccordionContent className="rounded-md border bg-background px-4 py-3 text-muted-foreground shadow-sm primary-gradient primary-shadow border-gray-800">
                 <p>
-                  A user can either record a class or upload notes which are used when generating lecture notes, audios, quizzes and flashcards. 
+                The AI scans your uploaded contract to identify key clauses, terms, and sections. It uses this analysis to answer your questions and provide context-aware references from the document. 
                 </p>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="faq-3">
               <AccordionTrigger className="flex items-center justify-between rounded-md bg-muted px-4 py-3 font-medium transition-colors hover:bg-muted/50 primary-gradient primary-shadow border-gray-800">
-                <span>What languages are supported?</span>
+                <span>Can I sign my contract within the app?</span>
                 <div className="h-5 w-5 text-muted-foreground" />
               </AccordionTrigger>
               <AccordionContent className="rounded-md border bg-background px-4 py-3 text-muted-foreground shadow-sm primary-gradient primary-shadow border-gray-800">
                 <p>
-                  Over twenty languages are supported including: Arabic, Chinese, English etc. Below is a list of all supported languages:
-				  <a
-            className="hover:opacity-50 ml-2"
-            href="https://cloud.google.com/text-to-speech/docs/voices"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <p className="button-92">Click Here: Supported Languages</p>
-          </a>
-
+                Yes, the app includes secure e-signature functionality, allowing you to digitally sign your contracts directly within the platform.
                 </p>
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="faq-4">
               <AccordionTrigger className="flex items-center justify-between rounded-md bg-muted px-4 py-3 font-medium transition-colors hover:bg-muted/50 primary-gradient primary-shadow border-gray-800">
-                <span>What docs can be uploaded ?</span>
+                <span>Does the app support multiple languages?</span>
                 <div className="h-5 w-5 text-muted-foreground" />
               </AccordionTrigger>
               <AccordionContent className="rounded-md border bg-background px-4 py-3 text-muted-foreground shadow-sm primary-gradient primary-shadow border-gray-800">
                 <p>
-                  Pdfs, Audios, videos, text files are supported. All uploaded documents are embeded with gemini and saved to a database to make them searchable.
+                Absolutely! The app can analyze and provide answers in various languages, ensuring you can work with contracts in your preferred language.
                 </p>
               </AccordionContent>
             </AccordionItem>
