@@ -17,12 +17,6 @@ export default async function Header() {
         <div className="flex w-fit items-center gap-[22px]">
           {user ? (
             <>
-            <Link
-                href={'/scan'}
-                className="hidden cursor-pointer text-lg text-dark md:inline-block lg:text-xl"
-              >
-                Scan
-              </Link>
               <Link
                 href={'/upload'}
                 className="hidden cursor-pointer text-lg text-dark md:inline-block lg:text-xl"
