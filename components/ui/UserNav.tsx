@@ -1,6 +1,6 @@
 'use client';
 
-import { LogOut, Paintbrush2, MicIcon, BotIcon } from 'lucide-react';
+import { LogOut, Paintbrush2, MicIcon, BotIcon, CheckSquare } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from './avatar';
 import { Button } from './button';
 import {
@@ -49,7 +49,7 @@ export function UserNav({
         <DropdownMenuSeparator />
         <Link href="/track">
           <DropdownMenuItem className="hover:cursor-pointer hover:bg-gray-200">
-            <BotIcon className="mr-2 h-4 w-4 text-black" />
+            <CheckSquare className="mr-2 h-4 w-4 text-black" />
             <span className="text-black">Track</span>
           </DropdownMenuItem>
         </Link>

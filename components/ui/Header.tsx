@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { UserNav } from './UserNav';
 import { currentUser } from '@clerk/nextjs';
-import { FileText } from 'lucide-react';
+import { CheckSquare, FileText } from 'lucide-react';
 
 export default async function Header() {
   const user = await currentUser();
@@ -10,7 +10,7 @@ export default async function Header() {
       <div className="max-width flex items-center justify-between text-black">
         {/* logo */}
         <Link className="flex w-fit items-center gap-[2px]" href="/">
-          <FileText className="h-6 w-6" />
+        <CheckSquare className="h-6 w-6" />
           <h1 className="text-xl font-semibold">Habits </h1>
         </Link>
         {/* buttons */}
