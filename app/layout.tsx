@@ -7,11 +7,11 @@ import { Toaster } from 'react-hot-toast';
 import { Analytics } from '@vercel/analytics/react';
 
 
-let title = 'ContractSuite - Indepth Contract Analysis';
-let description = 'Indepth Contract Analysis and signing';
+let title = 'Habits';
+let description = 'Track Your Habits, Transform Your Life';
 let url = 'https://note-cast.vercel.app/';
 let ogimage = '';
-let sitename = 'blindCast';
+let sitename = 'Habits';
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),

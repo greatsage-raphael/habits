@@ -47,28 +47,10 @@ export function UserNav({
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <Link href="/generate">
-          <DropdownMenuItem className="hover:cursor-pointer hover:bg-gray-200">
-            <Paintbrush2 className="mr-2 h-4 w-4 text-black" />
-            <span className="text-black">Generate</span>
-          </DropdownMenuItem>
-        </Link>
-        <Link href="/record">
-          <DropdownMenuItem className="hover:cursor-pointer hover:bg-gray-200">
-            <MicIcon className="mr-2 h-4 w-4 text-black" />
-            <span className="text-black">Record</span>
-          </DropdownMenuItem>
-        </Link>
-        <Link href="/tests">
-          <DropdownMenuItem className="hover:cursor-pointer hover:bg-gray-200">
-          <Paintbrush2 className="mr-2 h-4 w-4 text-black" />
-            <span className="text-black">Community</span>
-          </DropdownMenuItem>
-        </Link>
-        <Link href="/tutor">
+        <Link href="/track">
           <DropdownMenuItem className="hover:cursor-pointer hover:bg-gray-200">
             <BotIcon className="mr-2 h-4 w-4 text-black" />
-            <span className="text-black">AI tutor</span>
+            <span className="text-black">Track</span>
           </DropdownMenuItem>
         </Link>
         <DropdownMenuItem

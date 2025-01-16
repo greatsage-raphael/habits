@@ -11,17 +11,17 @@ export default async function Header() {
         {/* logo */}
         <Link className="flex w-fit items-center gap-[2px]" href="/">
           <FileText className="h-6 w-6" />
-          <h1 className="text-xl font-semibold">Contract Suite</h1>
+          <h1 className="text-xl font-semibold">Habits </h1>
         </Link>
         {/* buttons */}
         <div className="flex w-fit items-center gap-[22px]">
           {user ? (
             <>
               <Link
-                href={'/upload'}
+                href={'/track'}
                 className="hidden cursor-pointer text-lg text-dark md:inline-block lg:text-xl"
               >
-                Upload
+                Track
               </Link>
               <UserNav
                 image={user.imageUrl}
