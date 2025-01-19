@@ -20,6 +20,8 @@ import {
 } from '@/components/ui/tool-tip';
 import { useUser } from '@clerk/nextjs';
 import { supabase } from '@/scripts/admin';
+import { generateSubTasks } from '@/scripts/sub-tasks';
+import SubTaskList from '@/components/ui/subtask';
 
 interface Habit {
   id: string;
@@ -35,6 +37,11 @@ interface HabitLog {
   completed: boolean;
 }
 
+interface SubTask {
+  habitId: string;
+  subTaskName: string;
+}
+
 const DAYS = ['M', 'T', 'W', 'Th', 'F', 'Sa', 'Su'];
 const WEEKS = Array.from({ length: 52 }, (_, i) => i + 1);
 
@@ -46,7 +53,10 @@ export default function HabitTracker() {
   const [habitLogs, setHabitLogs] = useState<HabitLog[]>([]);
   const [currentWeek, setCurrentWeek] = useState(1);
   const [isAddHabitOpen, setIsAddHabitOpen] = useState(false);
+  const [issubTasks, setIsSubTasks] = useState(false);
   const [habitId, setHabitId] = useState('');
+  const [subTasks, setSubTasks] = useState<SubTask[]>([]);
+  const [selectedHabitId, setSelectedHabitId] = useState<string | null>(null);
   const { user } = useUser();
 
   const toggleHabit = async (week: number, habit: string, day: number) => {
@@ -113,29 +123,30 @@ export default function HabitTracker() {
     }
   }, [habitList]);
 
+  const fetchHabitLogs = async () => {
+    // Only proceed if we have habits
+    if (habitList.length === 0) {
+      setHabitLogs([]);
+      return;
+    }
 
-const fetchHabitLogs = async () => {
-  // Only proceed if we have habits
-  if (habitList.length === 0) {
-    setHabitLogs([]);
-    return;
-  }
+    const { data, error } = await supabase
+      .from('habit_logs')
+      .select('*')
+      .in(
+        'habit_id',
+        habitList.map((h) => h.id),
+      );
 
-  const { data, error } = await supabase
-    .from('habit_logs')
-    .select('*')
-    .in('habit_id', habitList.map(h => h.id));
+    if (error) {
+      console.error('Error fetching habit logs:', error);
+      return;
+    }
 
-  if (error) {
-    console.error('Error fetching habit logs:', error);
-    return;
-  }
-
-  if (data) {
-    setHabitLogs(data);
-  }
-};
-
+    if (data) {
+      setHabitLogs(data);
+    }
+  };
 
   const fetchHabits = async () => {
     const { data: habits, error } = await supabase
@@ -180,21 +191,60 @@ const fetchHabitLogs = async () => {
     });
   };
 
-  const nextWeek = () => setCurrentWeek((prev) => Math.min(prev + 1, 52));
-  const prevWeek = () => setCurrentWeek((prev) => Math.max(prev - 1, 1));
+  const handleHabitClick = (habitId: string, habitName: string) => {
+    setSelectedHabitId((prev) => (prev === habitId ? null : habitId));
+
+    if (selectedHabitId !== habitId) {
+      fetchSubTasks(currentWeek, habitId, habitName);
+      setIsSubTasks(true);
+    } else {
+      setSubTasks([]); // Clear subtasks when deselecting
+    }
+  };
+
+  const nextWeek = () => {
+    setSubTasks([]);
+    setCurrentWeek((prev) => Math.min(prev + 1, 52));
+  };
+  const prevWeek = () => {
+    setSubTasks([]);
+    setCurrentWeek((prev) => Math.max(prev - 1, 1));
+  };
 
   const isHabitCompleted = (week: number, habitId: string, day: number) => {
     return habitLogs.some(
-      log => 
-        log.habit_id === habitId && 
-        log.week_number === week && 
-        log.day === day && 
-        log.completed
+      (log) =>
+        log.habit_id === habitId &&
+        log.week_number === week &&
+        log.day === day &&
+        log.completed,
     );
   };
 
+  const fetchSubTasks = async (
+    week: number,
+    habitId: string,
+    habitName: string,
+  ) => {
+    try {
+      const generatedSubTasks = await generateSubTasks(week, habitName);
+
+      const sanitizedSubTasks = generatedSubTasks
+        .replace(/```json|```/g, '') // Remove ```json and ```
+        .trim(); // Trim any extra whitespace
+
+      // Parse and store sub-tasks
+      const parsedSubTasks: SubTask[] = JSON.parse(sanitizedSubTasks);
+      setSubTasks(parsedSubTasks);
+
+      console.log('Sub-tasks:', parsedSubTasks);
+    } catch (error) {
+      console.error('Error generating sub-tasks:', error);
+    }
+  };
+
   return (
-    <div className="flex min-h-screen w-full flex-col bg-white font-sans">
+    <div className="flex min-h-screen w-full flex-col font-sans">
       <div className="flex items-center justify-between bg-[#F7F0E6] p-4">
         <h1 className="text-xl font-bold text-[#8B7355] sm:text-2xl md:text-3xl">
           New Beginnings
@@ -207,7 +257,7 @@ const fetchHabitLogs = async () => {
           <Plus className="h-6 w-6" />
         </button>
       </div>
-  
+
       <div className="flex-1 overflow-hidden">
         <ScrollArea className="h-full w-full">
           <div className="space-y-6 p-4">
@@ -231,7 +281,7 @@ const fetchHabitLogs = async () => {
                 <ChevronRight className="h-6 w-6" />
               </button>
             </div>
-  
+
             {/* Habits Grid */}
             <div className="space-y-4">
               {/* Days Header */}
@@ -248,7 +298,7 @@ const fetchHabitLogs = async () => {
                   </div>
                 ))}
               </div>
-  
+
               {/* Habits Rows */}
               {habitList.map((habit) => (
                 <div
@@ -260,7 +310,12 @@ const fetchHabitLogs = async () => {
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <div
-                            className={`${habit.color} flex-grow truncate rounded-md px-2 py-1 text-xs font-medium text-[#8B7355] sm:text-sm`}
+                            className={`${habit.color} flex-grow cursor-pointer truncate rounded-md rounded-md p-2 px-2 py-1 text-xs font-medium text-[#8B7355] sm:text-sm ${
+                              selectedHabitId === habit.id ? 'bg-gray-200' : ''
+                            }`}
+                            onClick={() =>
+                              handleHabitClick(habit.id, habit.name)
+                            }
                           >
                             {habit.name}
                           </div>
@@ -284,7 +339,11 @@ const fetchHabitLogs = async () => {
                     <div key={dayIndex} className="flex justify-center">
                       <Checkbox
                         className="h-5 w-5 rounded-full border-2 border-[#8B7355] data-[state=checked]:bg-[#8B7355] data-[state=checked]:text-white sm:h-6 sm:w-6 md:h-8 md:w-8"
-                        checked={isHabitCompleted(currentWeek, habit.id, dayIndex)}
+                        checked={isHabitCompleted(
+                          currentWeek,
+                          habit.id,
+                          dayIndex,
+                        )}
                         onCheckedChange={() =>
                           toggleHabit(currentWeek, habit.id, dayIndex)
                         }
@@ -295,12 +354,15 @@ const fetchHabitLogs = async () => {
               ))}
             </div>
           </div>
+          {/* Sub-tasks */}
+
+          {issubTasks && <SubTaskList subtasks={subTasks} />}
         </ScrollArea>
       </div>
-  
+
       {/* Add Habit Dialog */}
       <Dialog open={isAddHabitOpen} onOpenChange={setIsAddHabitOpen}>
-        <DialogContent>
+        <DialogContent className="bg-white">
           <DialogHeader>
             <DialogTitle>Add New Habit</DialogTitle>
           </DialogHeader>

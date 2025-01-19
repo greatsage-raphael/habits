@@ -106,7 +106,7 @@ export function AddHabitForm({ onSubmit, onCancel }: AddHabitFormProps) {
         >
           Cancel
         </Button>
-        <Button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={isLoading} className='bg-[#8B7355] text-white'>
           {isLoading ? 'Adding...' : 'Add Habit'}
         </Button>
       </div>
